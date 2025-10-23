@@ -1,7 +1,7 @@
 <?php
 // Ejercicio 1
-$shop1 = ["Laptop", "Tablet", "Smartphone" ];
-$shop2 = [];
+$shop1 = ["Laptop", "Tablet", "Smartphone", "Laptop", "Tablet"];
+$shop2 = ['Smartphone', 'Laptop', 'Tablet', 'Smartwatch', 'Smartphone'];
 $shop3 = ["Laptop", "Smartwatch", "Tablet", "Tablet", "Smartphone"];
 
 // a. Unify all orders into a single array
