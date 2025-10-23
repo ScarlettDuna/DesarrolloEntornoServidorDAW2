@@ -13,7 +13,7 @@ $ventasPorProducto = array_count_values($pedidosTotales);
 print_r($ventasPorProducto);
 
 // c. Find if a specific product was sold
-$productoBuscado = "Tablet";
+$productoBuscado = "Laptop";
 
 if (in_array($productoBuscado, array_keys($ventasPorProducto))){
     echo "The product was sold. \n";
@@ -47,4 +47,83 @@ ksort($updated_inventory, SORT_STRING);
 // Display the final inventory
 print_r($updated_inventory);
 
+// 3. You have an array of students, where each student is represented as an associative array with their name and an array of grades. Your task is to:
+
+$students = [
+    ['name' => 'Alice', 'grades' => [85, 78, 92]],
+    ['name' => 'Bob', 'grades' => [58, 62, 48]],
+    ['name' => 'Charlie', 'grades' => [95, 100, 97]],
+    ['name' => 'Diana', 'grades' => [60, 70, 65]],
+    ['name' => 'Eve', 'grades' => [40, 50, 55]],
+];
+
+// Calculate the average grade for each student. Array_sum, count
+$studentAvg = [];
+foreach ($students as $student){
+    $studentAvg[$student["name"]] = round(array_sum($student["grades"]) / count($student["grades"]), 1);
+}
+
+arsort($studentAvg);
+print_r($studentAvg);
+// Sort the remaining students by their average grade in descending order. Usort
+function cmp($a, $b) {
+    if ($a == $b) {
+        return 0;
+    }
+    return ($a > $b) ? -1 : 1;
+}
+
+uasort($studentAvg, "cmp");
+print_r($studentAvg);
+
+// Create a new array containing strings like: "Name: AverageGrade".
+$studentData = [];
+for ($i = 0; $i < count($studentAvg); $i ++){
+    array_push($studentData, array_keys($studentAvg)[$i].": ".array_values($studentAvg)[$i]);
+}
+print_r($studentData);
+
+// Find the highest average grade among all students max array_column
+$maxAverage = max(array_values($studentAvg));
+echo $maxAverage."\n"; 
+
+// Print the list of students with their averages and the highest average grade.
+
+// 4. You’re managing a fruit inventory system. You have three arrays: 
+// Use: array_diff(), array_keys, and array_splice()
+
+$inventory = [
+    "apple" => 50,
+    "banana" => 20,
+    "cherry" => 30,
+    "date" => 15,
+    "fig" => 10,
+    "grape" => 25
+];
+$sold_today = ["banana", "date", "kiwi", "apple"];
+$restock = [
+    "apple" => 20,
+    "cherry" => 15,
+    "fig" => 5,
+    "kiwi" => 10
+];
+// Identify which fruits were sold today that do not exist in the inventory (i.e., invalid sales).
+$diferencia = array_diff($sold_today, array_keys($inventory));
+print_r($diferencia);
+
+// From the inventory, find the keys (fruit names) of fruits that were not sold today
+$diferencia2 = array_diff(array_keys($inventory), $sold_today);
+print_r($diferencia2);
+
+// From those unsold fruits, remove the first two alphabetically (using array_splice).
+$diferencia2_2 = array_splice($diferencia2, 2);
+print_r($diferencia2_2);
+
+// For the remaining unsold fruits, increase their inventory counts by the corresponding amounts in the restock array (if they exist in restock).
+foreach($restock as $name => $quantity){
+    $inventory[$name] += $quantity;
+}
+// Print the final inventory.
+echo "Final inventory: ";
+print_r($inventory);
 ?> 
