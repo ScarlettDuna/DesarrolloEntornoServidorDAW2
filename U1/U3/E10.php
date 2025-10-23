@@ -62,24 +62,14 @@ $studentAvg = [];
 foreach ($students as $student){
     $studentAvg[$student["name"]] = round(array_sum($student["grades"]) / count($student["grades"]), 1);
 }
-
-arsort($studentAvg);
-print_r($studentAvg);
 // Sort the remaining students by their average grade in descending order. Usort
-function cmp($a, $b) {
-    if ($a == $b) {
-        return 0;
-    }
-    return ($a > $b) ? -1 : 1;
-}
-
-uasort($studentAvg, "cmp");
+arsort($studentAvg);
 print_r($studentAvg);
 
 // Create a new array containing strings like: "Name: AverageGrade".
 $studentData = [];
-for ($i = 0; $i < count($studentAvg); $i ++){
-    array_push($studentData, array_keys($studentAvg)[$i].": ".array_values($studentAvg)[$i]);
+foreach ($studentAvg as $name => $grades) {
+    array_push($studentData, $name.": ".$grades);
 }
 print_r($studentData);
 
@@ -88,6 +78,9 @@ $maxAverage = max(array_values($studentAvg));
 echo $maxAverage."\n"; 
 
 // Print the list of students with their averages and the highest average grade.
+foreach ($students as $student) {
+    echo "Name: ".$student["name"]. " Average: ".round(array_sum($student["grades"]) / count($student["grades"]), 1)." Highest mark: ".(max($student["grades"]))."\n";
+}
 
 // 4. You’re managing a fruit inventory system. You have three arrays: 
 // Use: array_diff(), array_keys, and array_splice()
