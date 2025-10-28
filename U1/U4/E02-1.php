@@ -8,8 +8,36 @@ $prod = ["jeans1" => [
             "name" => "Black dressing pants for women",
             "price" => 15.25,
             "img" => "./imgs/pants1.webp",],
-
+        "pants3" => [
+            "name" => "Beige dressing pants",
+            "price" => 14.99,
+            "img" => "./imgs/pants2.webp"],
+        "shirt1" => [
+            "name" => "Black Dev shirt",
+            "price" => 7.99,
+            "img" => "./imgs/shirt-dev1.jfif"],
+        "shirt2" => [
+            "name" => "Gray Xmax Dev shirt",
+            "price" => 9.99,
+            "img" => "./imgs/shirt-dev2.jfif"],
+        "shirt3" => [
+            "name" => "Red QA shirt",
+            "price" => 9.99,
+            "img" => "./imgs/shirt-qa.webp"],
+        "shirt4" => [
+            "name" => "Dark blue dev shirt",
+            "price" => 8.99,
+            "img" => "./imgs/While-Alive-eat-sleep-NAVY.webp"],
+        "sweater1" => [
+            "name" => "Xmas sweater",
+            "price" => 15.99,
+            "img" => "./imgs/sweater2.webp"],
+        "sweater2" => [
+            "name" => "Xmas sweater 2",
+            "price" => 14.99,
+            "img" => "./imgs/sweater3.webp"]
         ];
+
 $_SESSION["productos"] = $prod;
 ?>
 <!DOCTYPE html>
@@ -57,132 +85,24 @@ $_SESSION["productos"] = $prod;
                 <th>Selec Quantity</th>
             </thead>
             <tbody>
-                <tr>
-                    <td><img src="./imgs/jeans1.jpg" alt="light blue jeans"></td>
-                    <td>Light Blue Jeans</td>
-                    <td>10.99</td>
-                    <td>
-                        <select name="jeans1Qquantity">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/pants1.webp" alt="black woman pants"></td>
-                    <td>Black dressing pants for women</td>
-                    <td>15.25</td>
-                    <td>
-                        <select name="pants2[quantity]">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/pants2.webp" alt="beige pants"></td>
-                    <td>Beige dressing pants</td>
-                    <td>14.99</td>
-                    <td>
-                        <select name="quantity" id="pants3Q">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/shirt-dev1.jfif" alt="black shirt"></td>
-                    <td>Black Dev shirt</td>
-                    <td>7.99</td>
-                    <td>
-                        <select name="quantity" id="shirt1Q">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/shirt-dev2.jfif" alt="greay shirt" ></td>
-                    <td>Gray Xmax Dev shirt</td>
-                    <td>9.99</td>
-                    <td>
-                        <select name="quantity" id="shirt2Q">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/shirt-qa.webp" alt="red shirt" ></td>
-                    <td>Red QA shirt</td>
-                    <td>9.99</td>
-                    <td>
-                        <select name="quantity" id="shirt3Q">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/While-Alive-eat-sleep-NAVY.webp" alt="dark blue shirt"></td>
-                    <td>Dark blue dev shirt</td>
-                    <td>8.99</td>
-                    <td>
-                        <select name="quantity" id="shirt4Q">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select></td>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/sweater2.webp" alt="xmas sweater" ></td>
-                    <td>Xmas sweater</td>
-                    <td>15.99</td>
-                    <td>
-                        <select name="quantity" id="sweater1Q">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select></td>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="./imgs/sweater3.webp" alt="xmas sweater 2"></td>
-                    <td>Xmas sweater 2</td>
-                    <td>14.99</td>
-                    <td>
-                        <select name="quantity" id="sweater2Q">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select></td>
-                    </td>
-                </tr>
+                <?php
+                    foreach ($_SESSION['productos'] as $id => $p) {
+                        echo ("<tr>
+                                <td><img src=".$p['img']." alt=".$p['name']."></td>
+                                <td>".$p['name']."</td>
+                                <td>".$p['price']."</td>
+                                <td>
+                                    <select name='quantity[$id]' >
+                                        <option value='0'>0</option>
+                                        <option value='1'>1</option>
+                                        <option value='2'>2</option>
+                                        <option value='3'>3</option>
+                                        <option value='4'>4</option>
+                                    </select></td>
+                                </td>
+                            </tr>");
+                    }
+                ?>
             </tbody>
         </table>
         <button type="submit">continue</button>
