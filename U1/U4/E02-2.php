@@ -1,5 +1,12 @@
 <?php
 session_start();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    foreach ($_POST['quantity'] as $id => $cantidad) {
+        if ($cantidad > 0) {
+            $_SESSION['productos'][$id]['quantity'] = $cantidad;
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,13 +19,13 @@ session_start();
     <h3>Your Data</h3>
     <form action="./E02-3.php" method="post">
         <label for="full_name">Name and Surname</label>
-        <input type="text" name="full_name" id="full_name">
+        <input type="text" name="full_name" id="full_name" required>
         <br>
         <label for="address">Address</label>
-        <input type="text" name="address" id="address">
+        <input type="text" name="address" id="address" required>
         <br>
         <label for="telph">Telephone</label>
-        <input type="tel" name="telph" id="telph">
+        <input type="tel" name="telph" id="telph" required>
         <br>
         <button type="submit">Continue</button>
     </form>

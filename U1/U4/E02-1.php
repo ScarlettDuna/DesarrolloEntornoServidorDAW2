@@ -90,7 +90,7 @@ $_SESSION["productos"] = $prod;
                         echo ("<tr>
                                 <td><img src=".$p['img']." alt=".$p['name']."></td>
                                 <td>".$p['name']."</td>
-                                <td>".$p['price']."</td>
+                                <td>".$p['price']."€</td>
                                 <td>
                                     <select name='quantity[$id]' >
                                         <option value='0'>0</option>
