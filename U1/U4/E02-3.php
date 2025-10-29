@@ -54,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['full_name'])) {
             <th>Quantity</th>
             <th>Total</th>
             <?php
+            $totalGeneral = 0;
                 foreach($_SESSION["productos"] as $id => $product){
                     if (isset($product["quantity"]) && $product["quantity"] > 0) {
                         echo ("<tr>
@@ -62,11 +63,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['full_name'])) {
                                 <td>".$product['quantity']."</td>
                                 <td>".($product['quantity'] * $product['price'])."</td>
                             </tr>");
+                        $totalGeneral += ($product['quantity'] * $product['price']);
                     }
                 }
             ?>
             
         </tbody>
+        <tfoot>
+            <td>Total</td>
+            <td><?=$totalGeneral ?></td>
+        </tfoot>
     </table>
     
 </body>
