@@ -36,6 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['full_name'])) {
 </head>
 <body>
     <h2>Your Order</h2>
+    <button><a href="./E02-1.php">Volver a paso 1</a></button>
+    <button><a href="./E02-2.php">Volver a paso 2</a></button>
     <div class="client">
         <h3>Customer Data</h3>
         <p>Full Name: <?= $_SESSION['client']['name']?></p>

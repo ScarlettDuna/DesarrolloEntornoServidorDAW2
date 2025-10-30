@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <h3>Your Data</h3>
+    <button><a href="./E02-1.php">Volver a paso 1</a></button>
     <form action="./E02-3.php" method="post">
         <label for="full_name">Name and Surname</label>
         <input type="text" name="full_name" id="full_name" required>

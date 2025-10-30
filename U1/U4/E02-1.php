@@ -38,7 +38,13 @@ $prod = ["jeans1" => [
             "img" => "./imgs/sweater3.webp"]
         ];
 
-$_SESSION["productos"] = $prod;
+if (!isset($_SESSION["productos"])){
+    $_SESSION["productos"] = $prod;
+    echo "aqui";
+} else {
+    print_r($_SESSION["productos"]);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
