@@ -1,12 +1,11 @@
 <?php
 session_start();
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['full_name'])) {
-    $_SESSION['client'] = [
-        'name' => $_POST['full_name'] ?? '',
-        'address' => $_POST['address'] ?? '',
-        'tel' => $_POST['telph'] ?? ''
-    ];
+if (isset($_GET['new_order'])) {
+    session_destroy();
+    header('Location: ./E02-1.php');
+    exit;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,8 +35,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['full_name'])) {
 </head>
 <body>
     <h2>Your Order</h2>
-    <button><a href="./E02-1.php">Volver a paso 1</a></button>
-    <button><a href="./E02-2.php">Volver a paso 2</a></button>
+    <form action="./E02-1.php" method="get">
+        <button>Volver a paso 1</button>
+    </form>
+    <form action="./E02-2.php" method="get">
+        <button>Volver a paso 2</button>
+    </form>
+    
     <div class="client">
         <h3>Customer Data</h3>
         <p>Full Name: <?= $_SESSION['client']['name']?></p>
@@ -48,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['full_name'])) {
 
     <table>
         <thead>
-            <th colspan="3">Order Summary</th>
+            <th colspan="4">Order Summary</th>
         </thead>
         <tbody>
             <th>Product</th>
@@ -72,13 +76,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['full_name'])) {
             
         </tbody>
         <tfoot>
-            <td>Total</td>
+            <td colspan="3">Total</td>
             <td><?=$totalGeneral ?></td>
         </tfoot>
     </table>
-    
+    <form action="./E02-1.php" method="get">
+        <button type="submit" name="new_order" value="1">Nueva compra</button>
+    </form>
 </body>
-<?php
-    session_destroy();
-?>
 </html>

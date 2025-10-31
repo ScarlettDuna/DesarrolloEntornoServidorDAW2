@@ -1,11 +1,13 @@
 <?php
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    foreach ($_POST['quantity'] as $id => $cantidad) {
-        if ($cantidad > 0) {
-            $_SESSION['productos'][$id]['quantity'] = $cantidad;
-        }
-    }
+    $_SESSION['client'] = [
+        'name' => $_POST['full_name'] ?? '',
+        'address' => $_POST['address'] ?? '',
+        'tel' => $_POST['telph'] ?? ''
+    ];
+    header("Location: ./E02-3.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -17,16 +19,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <h3>Your Data</h3>
-    <button><a href="./E02-1.php">Volver a paso 1</a></button>
-    <form action="./E02-3.php" method="post">
+    <form action="./E02-1.php" method="get">
+        <button>Volver a paso 1</button>
+    </form>
+    <form method="post">
         <label for="full_name">Name and Surname</label>
-        <input type="text" name="full_name" id="full_name" required>
+        <input type="text" name="full_name" id="full_name" value="<?php echo $_SESSION['client']['name'] ?? ''; ?>" required>
         <br>
         <label for="address">Address</label>
-        <input type="text" name="address" id="address" required>
+        <input type="text" name="address" id="address" value="<?php echo $_SESSION['client']['address'] ?? ''; ?>" required>
         <br>
         <label for="telph">Telephone</label>
-        <input type="tel" name="telph" id="telph" required>
+        <input type="tel" name="telph" id="telph" value="<?php echo $_SESSION['client']['tel'] ?? ''; ?>" required>
         <br>
         <button type="submit">Continue</button>
     </form>

@@ -39,10 +39,17 @@ $prod = ["jeans1" => [
         ];
 
 if (!isset($_SESSION["productos"])){
+    foreach ($prod as $id => $p) {
+        $prod[$id]['quantity'] = 0;
+    }
     $_SESSION["productos"] = $prod;
-    echo "aqui";
-} else {
-    print_r($_SESSION["productos"]);
+} 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    foreach ($_POST['quantity'] as $id => $cantidad) {
+        $_SESSION['productos'][$id]['quantity'] = (int)$cantidad;
+    }
+    header("Location: ./E02-2.php");
+    exit;
 }
 
 ?>
@@ -82,7 +89,7 @@ if (!isset($_SESSION["productos"])){
 <body>
     <h1>Clothes for devs</h1>
     <h3>Confy and motivating</h3>
-    <form action="./E02-2.php" method="post">
+    <form method="post">
         <table>
             <thead>
                 <th>Image</th>
@@ -93,22 +100,29 @@ if (!isset($_SESSION["productos"])){
             <tbody>
                 <?php
                     foreach ($_SESSION['productos'] as $id => $p) {
-                        echo ("<tr>
-                                <td><img src=".$p['img']." alt=".$p['name']."></td>
-                                <td>".$p['name']."</td>
-                                <td>".$p['price']."€</td>
+                        $selectedQty = $p['quantity'] ?? 0; // Valor guardado o 0
+
+                        // Generar las opciones del select
+                        $options = '';
+                        for ($i = 0; $i <= 4; $i++) {
+                            $selected = ($i == $selectedQty) ? 'selected' : '';
+                            $options .= "<option value='$i' $selected>$i</option>";
+                        }
+
+                        // Mostrar la fila
+                        echo "
+                            <tr>
+                                <td><img src='{$p['img']}' alt='{$p['name']}'></td>
+                                <td>{$p['name']}</td>
+                                <td>{$p['price']}€</td>
                                 <td>
-                                    <select name='quantity[$id]' >
-                                        <option value='0'>0</option>
-                                        <option value='1'>1</option>
-                                        <option value='2'>2</option>
-                                        <option value='3'>3</option>
-                                        <option value='4'>4</option>
-                                    </select></td>
+                                    <select name='quantity[$id]'>
+                                        $options
+                                    </select>
                                 </td>
-                            </tr>");
+                            </tr>";
                     }
-                ?>
+                    ?>
             </tbody>
         </table>
         <button type="submit">continue</button>
