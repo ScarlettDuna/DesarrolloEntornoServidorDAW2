@@ -3,7 +3,9 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET'){
-    unset($_SESSION['cart'][$_GET['remove']]);
+    if (isset($_GET['remove'])) {
+        unset($_SESSION['cart'][$_GET['remove']]);
+};
 }
 ?>
 <!DOCTYPE html>
@@ -12,6 +14,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET'){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snack shop - Shopping Cart</title>
+        <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1, h3 {
+            flex-direction: column;
+            text-align: center;
+        }
+        table {
+            padding: 15px;
+            justify-self: center;
+        }
+        td {
+            text-align: center;
+            min-width: 150px;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 <body>
     <h1>Shopping Cart</h1>
@@ -20,15 +42,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET'){
             <thead>
                 <th>Item</th>
                 <th>Quantity</th>
+                <th>Total</th>
             </thead>
             <?php 
-                foreach($_SESSION['cart'] as $item => $qty) {
+                foreach($_SESSION['cart'] as $item => $data) {
+                    $total = $data['price'] * $data['quantity'];
                     echo "<tr><td>$item</td>
-                            <td>$qty</td>
-                            <td><button value=".$item.">Remove item</button></tr>";
+                            <td>{$data['quantity']}</td>
+                            <td>$total</td>
+                            <td><button name='remove' value='$item'>Remove item</button></tr>";
                 }
             ?>
-        </table>    
+        </table>   
+        
+    </form>
+    <form action="./checkout.php" method="get">
+        <button type="submit">Continue to checkout</button>
     </form>
 </body>
 </html>
