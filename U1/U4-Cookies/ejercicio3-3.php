@@ -1,10 +1,12 @@
 <?php
 session_start();
 if (isset($_GET['action']) && $_GET['action'] === 'destroy') {
-    $shopping_cart = $_SESSION["shopping_cart"];
+    $shopping_cart = json_encode($_SESSION["shopping_cart"]);
     setcookie($_SESSION['user'], $shopping_cart, time() + (86400 * 30), '/');
     session_unset();
     session_destroy();
+    header("Location: ejercicio3.php");
+    exit;
 }
 
 ?>

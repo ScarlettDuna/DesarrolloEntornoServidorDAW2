@@ -1,7 +1,24 @@
 <?php
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    /*
+    si hay cookie con nombre del usuario:
+        decodificar cookie → carrito_antiguo
+        fusionar carrito_antiguo con carrito_actual
+        guardar resultado en $_SESSION['shopping_cart']
+
+    */
     $_SESSION['user'] = $_POST['user'];
+    if (isset($_COOKIE[$_POST['user']])) {
+        $decoded_cart = json_decode($_COOKIE[$_POST['user']], true);
+        foreach ($decoded_cart as $key => $value) {
+            if (isset($_SESSION['shopping_cart'][$key])) {
+                $_SESSION['shopping_cart'][$key] += $value;
+            } else {
+                $_SESSION['shopping_cart'][$key] = $value;
+            }
+        }
+    }
     header("Location: ejercicio3-3.php");
     exit;
 }
