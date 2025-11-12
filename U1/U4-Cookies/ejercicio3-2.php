@@ -1,12 +1,9 @@
 <?php
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    foreach ($_POST as $item => $quantity) {
-        if ($quantity > 0) {
-            $_SESSION['shopping_cart'][$item] = (int)$quantity;
-        }
-    }
+    $_SESSION['user'] = $_POST['user'];
     header("Location: ejercicio3-3.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
