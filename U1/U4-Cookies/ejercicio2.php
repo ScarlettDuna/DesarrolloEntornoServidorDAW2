@@ -1,7 +1,7 @@
 <?php
 // A form to enter de user data (name and password)
 // All the users are valid users. (You should keep a new cookie with the access time for each user if the cookie doesn't exits)
-// Each tiem a user logs in, their login time is recorded.
+// Each time a user logs in, their login time is recorded.
 // if they have already logged in (a cookies exists), their last login is displayed and updated to reflext their recent login. 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_COOKIE[$_POST['user']])){
