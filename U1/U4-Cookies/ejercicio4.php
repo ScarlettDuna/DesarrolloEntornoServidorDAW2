@@ -33,7 +33,7 @@ $favorites = [];
         <input type="text" name="user" id="user" required><br>
         <label for="pass">Password</label>
         <input type="password" name="pass" id="pass" required><br>
-        <h3>Choose your favorites</h3>
+        <h3>Your favorites</h3>
         <input type="checkbox" id="blueJeans" name="blueJeans" value="blueJeans"
                 <?php if (in_array("blueJeans", $favorites)) echo "checked"; ?>>
         <label for="blueJeans"> Blue jeans</label><br>
