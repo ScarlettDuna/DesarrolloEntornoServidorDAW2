@@ -1,12 +1,19 @@
 <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_COOKIE[$_POST['user']])) {
-        $cookieName = $_POST['user'];
-        $cookieValue = "";
-        array_splice($_POST, 0, 2);
-        foreach ($_POST as $key => $value) {
-            $cookieValue .= $value."|";
+$favorites = [];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        $user = $_POST['user'];
+        if (isset($_COOKIE[$user])) {
+            $favorites = explode("|", $_COOKIE[$user]);
         }
-        setcookie($cookieName, $cookieValue, time() + (86400 * 30), "/");
+
+        foreach ($_POST as $key => $value) {
+            if ($key !== 'user' && $key !== 'pass') {
+                $favorites[] = $value;
+            }
+        }
+        $cookieValue = implode('|', $favorites);
+        setcookie($user, $cookieValue, time() + (86400 * 30), "/");
 
     }
 ?>
@@ -27,11 +34,14 @@
         <label for="pass">Password</label>
         <input type="password" name="pass" id="pass" required><br>
         <h3>Choose your favorites</h3>
-        <input type="checkbox" id="blueJeans" name="blueJeans" value="blueJeans">
+        <input type="checkbox" id="blueJeans" name="blueJeans" value="blueJeans"
+                <?php if (in_array("blueJeans", $favorites)) echo "checked"; ?>>
         <label for="blueJeans"> Blue jeans</label><br>
-        <input type="checkbox" id="whiteShirt" name="whiteShirt" value="whiteShirt">
+        <input type="checkbox" id="whiteShirt" name="whiteShirt" value="whiteShirt"
+                <?php if (in_array("whiteShirt", $favorites)) echo "checked"; ?>>
         <label for="whiteShirt"> White Shirt</label><br>
-        <input type="checkbox" id="redShoes" name="redShoes" value="redShoes">
+        <input type="checkbox" id="redShoes" name="redShoes" value="redShoes"
+                <?php if (in_array("redShoes", $favorites)) echo "checked"; ?>>
         <label for="redShoes"> Red Shoes</label><br>
         <button type="submit">Add to favorites</button>
     </form>
