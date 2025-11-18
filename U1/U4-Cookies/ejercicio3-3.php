@@ -1,8 +1,13 @@
 <?php
 session_start();
 if (isset($_GET['action']) && $_GET['action'] === 'destroy') {
-    $shopping_cart = json_encode($_SESSION["shopping_cart"]);
-    setcookie($_SESSION['user'], $shopping_cart, time() + (86400 * 30), '/');
+    $shopping_cart = [];
+    foreach ($_SESSION['shopping_cart'] as $item => $quantity) {
+        $input = $item.":".$quantity;
+        array_push($shopping_cart, $input);
+    }
+    $shopping_cookie = implode("|", $shopping_cart);
+    setcookie($_SESSION['user'], $shopping_cookie, time() + (86400 * 30), '/');
     session_unset();
     session_destroy();
     header("Location: ejercicio3.php");
