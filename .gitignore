@@ -1,0 +1,21 @@
+# ---------- IDE (PhpStorm / IntelliJ) ----------
+.idea/
+*.iml
+workspace.xml
+shelf/
+
+# Requests del cliente HTTP del IDE
+httpRequests/
+
+# DataSources del IDE
+dataSources/
+dataSources.local.xml
+
+# ---------- Sistema ----------
+.DS_Store
+Thumbs.db
+
+# ---------- PHP ----------
+# Si algún día usas Composer:
+vendor/
+composer.lock
