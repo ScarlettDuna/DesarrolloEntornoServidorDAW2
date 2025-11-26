@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <h3>Your Data</h3>
-    <form action="./E02-1.php" method="get">
+    <form action="E02-1.php" method="get">
         <button>Volver a paso 1</button>
     </form>
     <form method="post">

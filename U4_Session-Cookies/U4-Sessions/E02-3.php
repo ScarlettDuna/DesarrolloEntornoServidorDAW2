@@ -35,10 +35,10 @@ if (isset($_GET['new_order'])) {
 </head>
 <body>
     <h2>Your Order</h2>
-    <form action="./E02-1.php" method="get">
+    <form action="E02-1.php" method="get">
         <button>Volver a paso 1</button>
     </form>
-    <form action="./E02-2.php" method="get">
+    <form action="E02-2.php" method="get">
         <button>Volver a paso 2</button>
     </form>
     
@@ -80,7 +80,7 @@ if (isset($_GET['new_order'])) {
             <td><?=$totalGeneral ?></td>
         </tfoot>
     </table>
-    <form action="./E02-1.php" method="get">
+    <form action="E02-1.php" method="get">
         <button type="submit" name="new_order" value="1">Nueva compra</button>
     </form>
 </body>
