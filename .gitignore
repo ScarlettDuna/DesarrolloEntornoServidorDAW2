@@ -16,6 +16,7 @@ dataSources.local.xml
 Thumbs.db
 
 # ---------- PHP ----------
-# Si algún día usas Composer:
 vendor/
-composer.lock
+
+# Logs
+*.log
