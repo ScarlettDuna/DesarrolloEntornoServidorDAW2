@@ -42,8 +42,8 @@
             <autor>Vladimir Nabokov</autor>
             <editorial>Anagrama</editorial>
             <anio_edicion>2003</anio_edicion>
-            <estado>libre</estado>
-        </libro>
+            <estado>prestado</estado>
+        <fecha_devolucion>24/12/2025</fecha_devolucion></libro>
         <libro>
             <titulo>Ulises</titulo>
             <isbn>8466359400</isbn>
