@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="biblioteca">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="genero" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="nombre" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="genero">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="libro" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="tipo" type="xs:string"  use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="libro">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="titulo" type="xs:string" />
+      <xs:element name="isbn" type="xs:string" />
+      <xs:element name="editorial" type="xs:string" />
+      <xs:element name="anio_edicion" type="xs:string" />
+      <xs:element name="estado" type="xs:string" />
+      <xs:element name="fecha_edicion" minOccurs="0" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+</xs:schema>
