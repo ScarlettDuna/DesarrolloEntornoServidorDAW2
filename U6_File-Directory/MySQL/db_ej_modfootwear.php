@@ -68,5 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])) {
     <input type="number" name="size" id="size"  required><br>
     <button type="submit">Update item</button>
 </form>
+<a href="./db_ej_menu.php">Go back to Menu</a>
 </body>
 </html>

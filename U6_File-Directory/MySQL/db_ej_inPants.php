@@ -6,7 +6,7 @@ try {
         ""
     );
     // SELECT * FROM pants;
-    $query = $pdo->query("SELECT * FROM footwear");
+    $query = $pdo->query("SELECT * FROM pants");
     $pants = $query->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo $e->getMessage();
@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['brand'])) {
     $stmtInsert = $pdo->prepare("INSERT INTO pants(size, price, brand, color) VALUES (?, ?, ?, ?)");
     $stmtInsert->execute([$size, $price, $brand, $color]);
     header('Location: db_ej_inPants.php');
+    exit;
 }
 
 
@@ -44,7 +45,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['brand'])) {
     <input type="number" name="price" id="price" step="0.01" required><br>
     <label for="size">Size</label>
     <input type="number" name="size" id="size"  required><br>
-    <button type="submit">Update item</button>
+    <button type="submit">Insert item</button>
 </form>
+<h2>Current Stock</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Brand</th>
+        <th>Color</th>
+        <th>Price</th>
+        <th>Size</th>
+    </tr>
+    <?php foreach ($pants as $pantsitem) : ?>
+        <tr>
+            <td><?= $pantsitem['id']?></td>
+            <td><?= $pantsitem['brand']?></td>
+            <td><?= $pantsitem['color']?></td>
+            <td><?= $pantsitem['price'] .'€'?></td>
+            <td><?= $pantsitem['size']?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+<a href="./db_ej_menu.php">Go back to Menu</a>
 </body>
 </html>

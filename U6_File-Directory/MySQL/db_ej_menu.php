@@ -42,5 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['actionDB'])) {
     </select>
     <button type="submit">Continue</button>
 </form>
+<a href="./db_ej_menu.php">Go back to Menu</a>
 </body>
 </html>
