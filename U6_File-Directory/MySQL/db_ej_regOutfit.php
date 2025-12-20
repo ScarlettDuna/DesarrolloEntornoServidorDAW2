@@ -80,5 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['person_id'])) {
     <br>
     <button type="submit">Register</button>
 </form>
+<a href="./db_ej_menu.php">Go back to Menu</a>
 </body>
 </html>
