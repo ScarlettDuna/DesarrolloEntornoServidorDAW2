@@ -1,0 +1,51 @@
+[
+    {
+        "id": "1",
+        "size": "38",
+        "price": "39.99",
+        "brand": "Levis",
+        "color": "blue"
+    },
+    {
+        "id": "2",
+        "size": "40",
+        "price": "29.99",
+        "brand": "Zara",
+        "color": "black"
+    },
+    {
+        "id": "3",
+        "size": "38",
+        "price": "49.99",
+        "brand": "Levis",
+        "color": "black"
+    },
+    {
+        "id": "4",
+        "size": "40",
+        "price": "34.99",
+        "brand": "Zara",
+        "color": "grey"
+    },
+    {
+        "id": "5",
+        "size": "42",
+        "price": "59.99",
+        "brand": "Diesel",
+        "color": "blue"
+    },
+    {
+        "id": "6",
+        "size": "36",
+        "price": "29.99",
+        "brand": "H&M",
+        "color": "beige"
+    },
+    {
+        "id": "7",
+        "size": "44",
+        "price": "69.99",
+        "brand": "Wrangler",
+        "color": "dark blue"
+    }
+]

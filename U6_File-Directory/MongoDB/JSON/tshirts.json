@@ -1,0 +1,58 @@
+[
+    {
+        "id": "1",
+        "size": "M",
+        "color": "white",
+        "brand": "H&M",
+        "price": "12.99"
+    },
+    {
+        "id": "2",
+        "size": "L",
+        "color": "black",
+        "brand": "Nike",
+        "price": "19.99"
+    },
+    {
+        "id": "3",
+        "size": "M",
+        "color": "red",
+        "brand": "Uniqlo",
+        "price": "15.99"
+    },
+    {
+        "id": "4",
+        "size": "S",
+        "color": "white",
+        "brand": "Zara",
+        "price": "9.99"
+    },
+    {
+        "id": "5",
+        "size": "M",
+        "color": "black",
+        "brand": "Nike",
+        "price": "21.99"
+    },
+    {
+        "id": "6",
+        "size": "L",
+        "color": "blue",
+        "brand": "Adidas",
+        "price": "18.50"
+    },
+    {
+        "id": "7",
+        "size": "XL",
+        "color": "grey",
+        "brand": "Uniqlo",
+        "price": "16.99"
+    },
+    {
+        "id": "8",
+        "size": "M",
+        "color": "green",
+        "brand": "H&M",
+        "price": "12.49"
+    }
+]

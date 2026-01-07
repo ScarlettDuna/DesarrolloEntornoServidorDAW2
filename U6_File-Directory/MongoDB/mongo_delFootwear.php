@@ -1,0 +1,46 @@
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+use MongoDB\BSON\ObjectId;
+
+try {
+    $client = new MongoDB\Client("mongodb://localhost:27017");
+    $db = $client->clothes;
+    // SELECT * FROM footwear;
+    $footwear = $db->footwear;
+    $stock = $footwear->find();
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id'])) {
+    $id = $_POST['id'];
+    $footwear->deleteOne(['_id' => new ObjectId($id)]);
+    header("Location: mongo_delFootwear.php");
+    exit;
+}
+
+
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Delete footwear item</title>
+</head>
+<body>
+<h1>Delete footwear item</h1>
+<form method="post">
+    <label for="id">ID</label>
+    <select name="id" id="id" required>
+        <?php foreach ($stock as $footitem) : ?>
+            <option value="<?= (string)$footitem->_id; ?>"><?= $footitem->brand.' | '.$footitem->color.' | '.$footitem->size; ?></option>
+        <?php endforeach; ?>
+    </select>
+    <button type="submit">Delete item</button>
+</form>
+<a href="./mongo_menu.php">Go back to Menu</a>
+</body>
+</html>

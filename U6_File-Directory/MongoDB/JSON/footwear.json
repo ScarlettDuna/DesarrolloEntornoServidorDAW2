@@ -1,0 +1,51 @@
+[
+    {
+        "id": "1",
+        "brand": "Nike",
+        "size": "42",
+        "color": "black",
+        "price": "79.99"
+    },
+    {
+        "id": "2",
+        "brand": "Adidas",
+        "size": "40",
+        "color": "white",
+        "price": "69.99"
+    },
+    {
+        "id": "3",
+        "brand": "Puma",
+        "size": "43",
+        "color": "red",
+        "price": "59.99"
+    },
+    {
+        "id": "4",
+        "brand": "Nike",
+        "size": "41",
+        "color": "white",
+        "price": "74.99"
+    },
+    {
+        "id": "5",
+        "brand": "Adidas",
+        "size": "42",
+        "color": "black",
+        "price": "89.99"
+    },
+    {
+        "id": "6",
+        "brand": "Puma",
+        "size": "40",
+        "color": "blue",
+        "price": "64.50"
+    },
+    {
+        "id": "7",
+        "brand": "Reebok",
+        "size": "43",
+        "color": "grey",
+        "price": "59.90"
+    }
+]
