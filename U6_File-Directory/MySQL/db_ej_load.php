@@ -5,7 +5,7 @@ try {
         "root",
         ""
     );
-    // SELECT * FROM footwear;
+    // SELECT * FROM tshirts;
     $query = $pdo->query("SELECT * FROM tshirts");
     $tshirts = $query->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
