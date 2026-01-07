@@ -75,19 +75,6 @@ function addLibro($xmlDoc, $datosArray) {
     $xmlDoc->save('biblioteca.xml');
 }
 
-/*  En caso de querer añadir a qué género se añadiría el libro
-
-addLibro($xmlDoc, $datosArray, $generoBuscado)
-
-recorrer generos
-    si genero.tipo == generoBuscado
-        appendChild(libro)
-        save
-        return
-
-si no se encuentra ningún genero
-    error: genero no existe
-*/
 
 function removeLibro($xmlDoc, $isbnBuscada) {
     $libros = $xmlDoc->getElementsByTagName('libro');

@@ -1,5 +1,5 @@
 <?php
-include_once 'Fase3.php';
+include_once 'funciones.php';
 $xmlDom = new DOMDocument();
 $xmlDom->load('biblioteca.xml');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -15,10 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Eliminar Libro</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Delete Book</title>
 </head>
 <body>
-<h1>Eliminar libro del registro</h1>
+<h1>Delete Book from XML</h1>
 <form method="post">
     <select name="libroEliminar" id="libroEliminar">
         <?php
@@ -33,8 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         ?>
     </select>
-    <button type="submit">Eliminar libro</button>
+    <button type="submit">Delete Book</button>
 </form>
-<a href="Fase4.php">Volver a servicios biblioteca</a>
+<a href="xml_menu.php">Return to menu</a>
 </body>
 </html>

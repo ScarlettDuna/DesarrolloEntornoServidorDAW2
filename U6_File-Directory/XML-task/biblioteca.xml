@@ -247,8 +247,8 @@
             <editorial>Booket</editorial>
             <anio_edicion>2011</anio_edicion>
             <estado>prestado</estado>
-            <fecha_devolucion>22/02/2022</fecha_devolucion>
-        </libro>
+            
+        <fecha_devolucion>21/01/2026</fecha_devolucion></libro>
         <libro>
             <titulo>La señora Dalloway</titulo>
             <isbn>8446041162</isbn>

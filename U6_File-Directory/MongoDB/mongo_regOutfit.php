@@ -19,7 +19,6 @@ try {
     echo $e->getMessage();
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['person_id'])) {
-    // INSERT INTO outfits (person_id, pants_id, tshirt_id, footwear_id, date) VALUES (?, ?, ?, ?, ?)
     $person_id = $_POST['person_id'];
     $pants_id = $_POST['pants_id'];
     $tshirt_id = $_POST['tshirt_id'];
@@ -52,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['person_id'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Register Outfit</title>
 </head>
 <body>
