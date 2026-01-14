@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX prueba</title>
+</head>
+<body>
+
+<button onclick="pedirHora()">Pedir hora al servidor</button>
+
+<script>
+    function pedirHora() {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    alert(this.responseText);
+                } else {
+                    alert("Error " + this.status);
+                }
+            }
+        };
+        xhttp.open("GET", "hora_servidor.php", true);
+        xhttp.send();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+
+</head>
+<body>
+<section id="principal"></section>
+<button onclick="categorias()">Pedir categorías</button>
+<script>
+    function categorias() {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                // crear lista
+                let lista = document.createElement('ul');
+                // meter los datos de la respuesta en un array
+                let cats = JSON.parse(this.responseText);
+                // para cada elemento del array
+                for (let i = 0; i < cats.length; i++) {
+                    let elem = document.createElement('li');
+                    elem.innerHTML = cats[i]['nombre'];
+                    lista.appendChild(elem);
+                }
+                let body = document.getElementById('principal');
+                body.innerHTML = ""; // borrar el contenido actual
+                body.appendChild(lista)
+            }
+        };
+        xhttp.open("GET", "data_categorias_json.php", true);
+        xhttp.send();
+        return false;
+    }
+</script>
+</body>
+</html>
