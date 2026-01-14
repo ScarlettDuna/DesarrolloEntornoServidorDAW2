@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>AJAX - Update 'clothes' DataBase</title>
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-$END$
+<h1>Update 'clothes' DataBase</h1>
+<div class="form">
+    <label for="actionDB">Select the action you want to take</label>
+    <select name="actionDB" id="actionDB">
+        <option value="ModFootwear">Modify footwear</option>
+        <option value="InPants">Insert pants</option>
+        <option value="Load">Load t-shirts</option>
+        <option value="RegOutfit">Register outfit</option>
+        <option value="DelFootwear">Delete footwear</option>
+    </select>
+    <button type="button" onclick="menu()">Continue</button>
+</div>
+<div id="DBworkplace">
+
+</div>
+<div id="DBresult">
+
+</div>
 </body>
 </html>
