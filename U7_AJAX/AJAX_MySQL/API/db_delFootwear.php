@@ -15,7 +15,7 @@ if (ctype_digit($id)) {
         // Si el ID existe en la base de datos, borramos
         if ($check) {
             $stmtdelete = $pdo->prepare("DELETE FROM footwear WHERE id=?");
-            $stmtdelete->execute([$id]);
+            $stmtdelete->execute([':id' => $id]);
             // Devolver listado actualizado
             $query = $pdo->query("SELECT * FROM footwear");
             $footwear = $query->fetchAll(PDO::FETCH_ASSOC);
