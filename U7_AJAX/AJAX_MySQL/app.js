@@ -39,7 +39,17 @@ function menu(){
 
             break;
         case "RegOutfit":
-
+            workplace.innerHTML = `<h3>Introduce los datos del nuevo item:</h3>
+                <label for="id-persona">ID Persona:</label>
+                <input type="number" name="id-persona" id="id-persona" required>
+                <label for="id-footwear">ID Footwear:</label>
+                <input type="number" name="id-footwear" id="id-footwear" required>
+                <label for="id-pants">ID Pants:</label>
+                <input type="number" name="id-pants" id="id-pants" required>
+                <label for="id-tshirt">ID T-shirts:</label>
+                <input type="number" name="id-tshirt" id="id-tshirt" required>
+                <button type="button" onclick="regOutfit()">Registrar Outfit</button>`;
+            cargarTablas();
             break;
         case "DelFootwear":
             workplace.innerHTML = `<label for="id">Introduce el ID del item que deseas borrar</label><br>
@@ -60,7 +70,7 @@ function borrar() {
         if (this.readyState == 4 && this.status == 200) {
             const data = JSON.parse(this.responseText);
 
-            let html = "<ul>";
+            let html = `<h3>ID - Brand - Color - Size - Price</h3><ul>`;
             data.forEach(item => {
                 html += `<li>${item.id} - ${item.brand} - ${item.color} - ${item.size} - ${item.price}</li>`;
             });
@@ -69,7 +79,7 @@ function borrar() {
             result.innerHTML = html;
         }
     }
-    xhttp.open("POST", 'db_delFootwear.php', true)
+    xhttp.open("POST", './API/db_delFootwear.php', true)
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhttp.send(params);
 }
@@ -86,7 +96,7 @@ function obtenerDatos() {
         result.innerHTML = `<p><strong>El campo ${campoSeleccionado} debe ser un número.</strong></p>`;
         return
     }
-    if ((campoSeleccionado === 'brand' || campoSeleccionado === 'color') && (valorEscrito.length === 0)){
+    if ((campoSeleccionado === 'brand' || campoSeleccionado === 'color') && (valorEscrito.trim() === '')){
         result.innerHTML = `<p><strong>El campo ${campoSeleccionado} debe ser una cadena de texto.</strong></p>`;
         return
     }
@@ -99,9 +109,10 @@ function modificar(id, campo, valor) {
 
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
+            console.log(JSON.parse(this.responseText))
             const data = JSON.parse(this.responseText);
 
-            let html = "<ul>";
+            let html = `<h3>ID - Brand - Color - Size - Price</h3><ul>`;
             data.forEach(item => {
                 html += `<li>${item.id} - ${item.brand} - ${item.color} - ${item.size} - ${item.price}</li>`;
             });
@@ -111,7 +122,7 @@ function modificar(id, campo, valor) {
         }
     };
 
-    xhttp.open("POST", "db_modFootwear.php", true);
+    xhttp.open("POST", "./API/db_modFootwear.php", true);
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhttp.send(params);
 }
@@ -127,7 +138,7 @@ function introducir(){
         if (this.readyState == 4 && this.status == 200) {
             const data = JSON.parse(this.responseText);
 
-            let html = "<ul>";
+            let html = `<h3>ID - Brand - Color - Size - Price</h3><ul>`;
             data.forEach(item => {
                 html += `<li>${item.id} - ${item.brand} - ${item.color} - ${item.size} - ${item.price}</li>`;
             });
@@ -136,7 +147,7 @@ function introducir(){
             result.innerHTML = html;
         }
     }
-    xhttp.open("POST", 'db_inPants.php' , true)
+    xhttp.open("POST", './API/db_inPants.php' , true)
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhttp.send(params);
 }
@@ -147,7 +158,7 @@ function cargarCamisetas() {
         if (this.readyState == 4 && this.status == 200) {
             const data = JSON.parse(this.responseText);
 
-            let html = "<ul>";
+            let html = `<h3>ID - Brand - Color - Size - Price</h3><ul>`;
             data.forEach(item => {
                 html += `<li>${item.id} - ${item.brand} - ${item.color} - ${item.size} - ${item.price}</li>`;
             });
@@ -156,6 +167,68 @@ function cargarCamisetas() {
             result.innerHTML = html;
         }
     }
-    xhttp.open("GET", 'db_load.php' , true)
+    xhttp.open("GET", './API/db_load.php' , true)
+    xhttp.send();
+}
+
+function regOutfit(){
+    let idperson = document.getElementById('id-persona').value;
+    let idfootwear = document.getElementById('id-footwear').value;
+    let idpants = document.getElementById('id-pants').value;
+    let idtshirt = document.getElementById('id-tshirt').value;
+    let xhttp = new XMLHttpRequest();
+    let params = `idPerson=${idperson}&idFootwear=${idfootwear}&idPants=${idpants}&idTshirt=${idtshirt}`;
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            const data = JSON.parse(this.responseText);
+
+            let html = `<h3>Outfit ID - Person ID - Footwear ID - Pants ID - T-Shirt ID</h3><ul>`;
+            data.forEach(item => {
+                html += `<li>${item.id} - ${item.person_id} - ${item.footwear_id} - ${item.pants_id} - ${item.tshirt_id}</li>`;
+            });
+            html += "</ul>";
+
+            result.innerHTML = html;
+        }
+    }
+    xhttp.open("POST", './API/db_regOutfit.php' , true)
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhttp.send(params);
+}
+function cargarTablas(){
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            const data = JSON.parse(this.responseText);
+
+            let html = "<h3>People</h3><ul>";
+            data.people.forEach(p => {
+                html += `<li>${p.id} - ${p.name}</li>`;
+            });
+            html += "</ul>";
+
+            html += "<h3>Pants</h3><ul>";
+            data.pants.forEach(p => {
+                html += `<li>${p.id} - ${p.brand} - ${p.size}</li>`;
+            });
+            html += "</ul>";
+
+            html += "<h3>Footwear</h3><ul>";
+            data.footwear.forEach(p => {
+                html += `<li>${p.id} - ${p.brand} - ${p.size}</li>`;
+            });
+            html += "</ul>";
+
+            html += "<h3>T-shirts</h3><ul>";
+            data.tshirts.forEach(p => {
+                html += `<li>${p.id} - ${p.brand} - ${p.size}</li>`;
+            });
+            html += "</ul>";
+
+            result.innerHTML = html;
+
+        }
+    }
+    xhttp.open("GET", './API/db_mostrarTablas.php' , true)
     xhttp.send();
 }
