@@ -11,6 +11,10 @@ body {
     background: #f5f7fa;
     color: #333;
     padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
 }
 
 /* Títulos */
@@ -25,10 +29,9 @@ h2 {
 /* Formularios */
 form {
     background: #fff;
-    padding: 20px;
     margin-bottom: 25px;
     border-radius: 6px;
-    max-width: 500px;
+    max-width: 600px;
 }
 
 label {
@@ -56,35 +59,13 @@ button:hover {
     background: #1a5fd0;
 }
 
-/* Tablas */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    margin-bottom: 25px;
+/* Listas */
+li {
+    list-style: none;
 }
 
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
 
-th {
-    background: #eef2f7;
-}
-
-/* Enlaces */
-a {
-    color: #2c7be5;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Mensajes */
-p {
-    margin-bottom: 10px;
+#DBworkplace, #DBresult {
+    margin-top: 35px;
+    max-width: 600px;
 }
