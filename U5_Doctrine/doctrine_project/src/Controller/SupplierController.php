@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
-final class git aSupplierController extends AbstractController
+final class SupplierController extends AbstractController
 {
     #[Route('/supplier', name: 'app_supplier')]
     public function index(): JsonResponse
