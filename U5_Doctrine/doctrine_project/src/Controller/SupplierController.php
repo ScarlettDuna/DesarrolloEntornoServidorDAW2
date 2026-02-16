@@ -8,6 +8,8 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\SupplierRepository;
 use App\Entity\Supplier;
 use App\Form\SupplierType;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
 final class SupplierController extends AbstractController
 {
     #[Route('/supplier', name: 'app_supplier')]
@@ -27,11 +29,60 @@ final class SupplierController extends AbstractController
         ]);
     }
     #[Route('/supplier/new', name: 'supplier_new')]
-    public function new(): Response
+    public function new(Request $request, EntityManagerInterface $manager): Response
     {
-        $form = $this->createForm(SupplierType::class);
+        $product = new Supplier();
+        $form = $this->createForm(SupplierType::class, $product);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($product);
+            $manager->flush();
+            $this->addFlash(
+                'notice',
+                'The supplier was successfully created'
+            );
+            return $this->redirectToRoute('supplier_show', ['id' => $product->getId()]);
+        }
+
         return $this->render('supplier/new.html.twig', [
             'form' => $form,
+        ]);
+    }
+    #[Route('/supplier/{id<\d+>}/edit', name: 'supplier_edit')]
+    public function edit(Supplier $product, Request $request, EntityManagerInterface $manager): Response
+    {
+        $form = $this->createForm(SupplierType::class, $product);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->flush();
+            $this->addFlash(
+                'notice',
+                'The supplier was successfully updated'
+            );
+            return $this->redirectToRoute('supplier_show', ['id' => $product->getId()]);
+        }
+
+        return $this->render('supplier/edit.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/supplier/{id}/delete', name: 'supplier_delete')]
+    public function delete(Request $request, Supplier $product, EntityManagerInterface $manager): Response
+    {
+        if ($request->getMethod() == 'POST') {
+            $manager->remove($product);
+            $manager->flush();
+            $this->addFlash(
+                'notice',
+                'The supplier was successfully deleted'
+            );
+            return $this->redirectToRoute('app_supplier', ['id' => $product->getId()]);
+        }
+        return $this->render('supplier/delete.html.twig', [
+            'id' => $product->getId(),
         ]);
     }
 }

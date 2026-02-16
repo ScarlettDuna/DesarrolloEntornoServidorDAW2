@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SupplierRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SupplierRepository::class)]
 class Supplier
@@ -14,6 +15,7 @@ class Supplier
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\Column(length: 150)]
