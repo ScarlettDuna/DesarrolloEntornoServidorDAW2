@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Outfit menu{% endblock %}
+
+{% block body %}
+    <h1>Outfits</h1>
+    <a href="{{ path('outfit_new') }}">New Outfit</a>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Pants</th>
+            <th>Footwear</th>
+            <th>T-shirt</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.people.name }}</td>
+            <td>{{ product.pants.brand}} | {{ product.pants.color }}</td>
+            <td>{{ product.footwear.brand }} | {{ product.footwear.size }}</td>
+            <td>{{ product.tshirt.brand }} | {{ product.tshirt.color }}</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}

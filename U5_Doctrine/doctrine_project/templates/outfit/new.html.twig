@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>New Outfit</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.people) }}
+    {{ form_row(form.pants) }}
+    {{ form_row(form.footwear) }}
+    {{ form_row(form.tshirt) }}
+    {{ form_row(form.save, {'label': 'Save'}) }}
+
+    {{ form_end(form) }}
+
+{% endblock %}

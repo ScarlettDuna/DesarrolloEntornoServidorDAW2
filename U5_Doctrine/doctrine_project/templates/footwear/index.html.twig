@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Footwear menu{% endblock %}
+
+{% block body %}
+    <h1>Footwear</h1>
+    <a href="{{ path('footwear_new') }}">New Footwear</a>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Brand</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Color</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.brand }}</td>
+                <td>{{ product.size }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.color }}</td>
+                <td><a href="{{ path('footwear_delete', {'id': product.id}) }}">Delete</a></td>
+                <td><a href="{{ path('footwear_edit', {'id': product.id}) }}">Edit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

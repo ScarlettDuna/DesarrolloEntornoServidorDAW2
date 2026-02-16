@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tshirts menu{% endblock %}
+
+{% block body %}
+    <h1>Tshirts</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Brand</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Color</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.brand }}</td>
+            <td>{{ product.size }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.color }}</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}
