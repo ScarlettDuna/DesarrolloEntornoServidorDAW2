@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Welcome menu{% endblock %}
+
 {% block body %}
+    <h2>What section do you want to visit?</h2>
 
-    <h1>Welcome</h1>
-    <a href="{{ path('product_index') }}">Products</a>
-
+    <a href="{{ path('app_pants') }}">Pants</a>
+    <a href="{{ path('app_tshirts') }}">T-shirts</a>
+    <a href="{{ path('app_footwear') }}">Footwear</a>
+    <a href="{{ path('app_outfit') }}">Outfit</a>
 {% endblock %}
